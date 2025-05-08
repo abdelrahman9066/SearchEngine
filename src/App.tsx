@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import SearchResults from './components/SearchResults';
+import { Avatar } from '@mui/material';
 import './App.css';
 
 function App() {
@@ -21,14 +22,14 @@ function App() {
   const [orderBy, setOrderBy] = useState('count');
   const [searched, setSearched] = useState(false);
   const [query, setQuery] = useState('');
-  const [expanded, setExpanded] = useState(false); // Initially collapsed
-  const [errorMessage, setErrorMessage] = useState(''); // Error message state
+  const [expanded, setExpanded] = useState(false); 
+  const [errorMessage, setErrorMessage] = useState(''); 
   const aboutRef = useRef<HTMLDivElement>(null);
 
   const handleSearch = async () => {
-    const words = query.trim().split(/\s+/); // Split input into words
-    const specialCharRegex = /[^a-zA-Z0-9\s]/g; // Regex to check for special characters
-    const numberRegex = /\d/; // Regex to check for numbers
+    const words = query.trim().split(/\s+/); 
+    const specialCharRegex = /[^a-zA-Z0-9\s]/g; 
+    const numberRegex = /\d/; 
 
     // Validation
     if (words.length > 2) {
@@ -111,9 +112,21 @@ function App() {
       <div className={`app-root${searched ? ' searched' : ''}`}>
         <header className="site-header">
           <div className="logo-circle">
-            <span className="logo-text">SE</span>
+            <Avatar
+            sx={{
+              width: 70,
+              height: 70,
+   
+            }}>
+              <img
+              src="https://cdn.discordapp.com/attachments/1194329689825742889/1370003679620501535/image.png?ex=681deada&is=681c995a&hm=d20463fa8960606020a50c50906e788fce0b08a0ddd925629d3a158224831c98&"
+              alt="Logo"
+              className="logo-image"
+              style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+              />
+            </Avatar>
           </div>
-          <span className="site-title">Search Engine</span>
+          <span className="site-title">Engine Tawfik</span>
         </header>
         <main className="main-content">
           {!searched && (
@@ -214,7 +227,7 @@ function App() {
             </div>
             <div className="team-member">
               <h3>Shehab Muhammed</h3>
-              <p>Backend Developer</p>
+              <p>كان بيعمل شاي</p>
             </div>
             <div className="team-member">
               <h3>Assem Amr</h3>

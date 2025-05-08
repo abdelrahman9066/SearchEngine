@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button, Box } from '@mui/material';
+import { TextField, Box } from '@mui/material';
 
 interface SearchBarProps {
   onSearch: (query1: string, query2?: string) => void;
@@ -27,9 +27,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         onChange={(e) => setQuery(e.target.value)}
         fullWidth
       />
-      <Button type="submit" variant="contained" color="primary">
-        Search
-      </Button>
     </Box>
   );
 };

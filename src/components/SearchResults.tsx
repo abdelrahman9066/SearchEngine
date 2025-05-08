@@ -21,7 +21,6 @@ const SearchResults: React.FC<SearchResultsProps> = ({ results, orderBy }) => {
 const [firstPage, setFirstPage] = useState<number>(1);
 const [secondPage, setSecondPage] = useState<number>(1);
 
-// Don't render anything if there are no results (initial state)
 if (!results || (!results.firstWordInfos && !results.secondWordInfos)) {
   return null;
 }
@@ -36,11 +35,9 @@ const { firstWordInfos = [], secondWordInfos = [], message = '' } = results;
   const paginatedFirst = firstWordInfos.slice((firstPage - 1) * pageSize, firstPage * pageSize);
   const paginatedSecond = secondWordInfos.slice((secondPage - 1) * pageSize, secondPage * pageSize);
 
-  // Determine how many boxes to show
   const showFirst = firstWordInfos.length > 0;
   const showSecond = secondWordInfos.length > 0;
 
-  // If neither has results, show nothing
   if (!showFirst && !showSecond) {
     return null;
   }
