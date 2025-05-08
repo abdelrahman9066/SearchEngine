@@ -611,3 +611,34 @@ body, html, #root {
   margin-top: 0.5rem;
   text-align: left;
 }
+
+/* Error Message Box */
+.error-box {
+  display: none;
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  background: #ffe6e6;
+  border: 1px solid #ff4d4d;
+  border-radius: 8px;
+  color: #ff4d4d;
+  font-size: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(255, 77, 77, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.error-box.visible {
+  display: block;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

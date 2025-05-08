@@ -127,7 +127,6 @@ function App() {
                       if (e.key === 'Enter') handleSearch();
                     }}
                   />
-                  {errorMessage && <p className="error-message">{errorMessage}</p>}
                   <div className="order-buttons">
                     <button
                       className={`order-btn${orderBy === 'pagerank' ? ' active' : ''}`}
@@ -165,8 +164,11 @@ function App() {
               </button>
             </div>
           </div>
-          <div className={`results-box${searched ? ' expanded' : ''}`}>
-            <SearchResults results={searchResultsProps} orderBy={orderBy} />
+          <div className={`error-box ${errorMessage ? 'visible' : ''}`}>
+            {errorMessage && <p>{errorMessage}</p>}
+          </div>
+          <div className={`results-box${searched && results ? ' expanded' : ''}`}>
+            {results && <SearchResults results={searchResultsProps} orderBy={orderBy} />}
           </div>
         </main>
         <div
