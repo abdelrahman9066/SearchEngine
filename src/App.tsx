@@ -22,11 +22,29 @@ function App() {
   const [searched, setSearched] = useState(false);
   const [query, setQuery] = useState('');
   const [expanded, setExpanded] = useState(false); // Initially collapsed
+  const [errorMessage, setErrorMessage] = useState(''); // Error message state
   const aboutRef = useRef<HTMLDivElement>(null);
 
   const handleSearch = async () => {
-    const [query1, query2] = query.trim().split(/\s+/, 2);
+    const words = query.trim().split(/\s+/); // Split input into words
+    const specialCharRegex = /[^a-zA-Z\s]/; // Regex to check for special characters
+
+    // Validation
+    if (words.length > 2) {
+      setErrorMessage('Enter two words');
+      return;
+    }
+    if (specialCharRegex.test(query)) {
+      setErrorMessage('Enter words only');
+      return;
+    }
+
+    // Clear error message if input is valid
+    setErrorMessage('');
+
+    const [query1, query2] = words;
     if (!query1) return;
+
     try {
       let url = `https://searchengine.runasp.net/api/SearchEngine?word=${query1}`;
       if (query2) {
@@ -35,10 +53,20 @@ function App() {
       url += `&orderBy=${orderBy}`;
       const response = await fetch(url);
       const data = await response.json();
+
+      // Check if the API returned results
+      if (!data || (!data.firstWordInfos?.length && !data.secondWordInfos?.length)) {
+        setErrorMessage('Not Found');
+        setResults(null);
+        setSearched(true);
+        return;
+      }
+
       setResults(data);
       setSearched(true);
     } catch (error) {
       console.error('Error fetching search results:', error);
+      setErrorMessage('An error occurred. Please try again.');
       setResults(null);
       setSearched(true);
     }
@@ -99,6 +127,7 @@ function App() {
                       if (e.key === 'Enter') handleSearch();
                     }}
                   />
+                  {errorMessage && <p className="error-message">{errorMessage}</p>}
                   <div className="order-buttons">
                     <button
                       className={`order-btn${orderBy === 'pagerank' ? ' active' : ''}`}

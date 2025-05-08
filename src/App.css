@@ -222,7 +222,7 @@ body, html, #root {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
   }
 }
 
@@ -603,4 +603,11 @@ body, html, #root {
   color: #444;
   opacity: 0.85;
   margin: 0;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  text-align: left;
 }
