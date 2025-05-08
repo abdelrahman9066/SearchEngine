@@ -511,7 +511,7 @@ body, html, #root {
 
 .arrow-down {
   animation: bounce 1.2s infinite;
-  color: #1976d2;
+  color: #ffffff;
   font-size: 2.5rem;
   display: flex;
   align-items: center;
@@ -539,7 +539,7 @@ body, html, #root {
 }
 
 .about-section h2 {
-  color: #1976d2;
+  color: #000000;
   margin-bottom: 1rem;
   font-size: 2rem;
 }
@@ -562,7 +562,7 @@ body, html, #root {
 }
 
 .team-section h2 {
-  color: #1976d2;
+  color: #000000;
   margin-bottom: 2rem;
   font-size: 2rem;
 }
@@ -594,7 +594,7 @@ body, html, #root {
 .team-member h3 {
   font-size: 1.15rem;
   font-weight: 600;
-  color: #1976d2;
+  color: #000000;
   margin-bottom: 0.5rem;
 }
 
@@ -612,9 +612,7 @@ body, html, #root {
   text-align: left;
 }
 
-/* Error Message Box */
 .error-box {
-  display: none;
   margin-top: 1rem;
   padding: 0.8rem 1rem;
   background: #ffe6e6;
@@ -625,10 +623,6 @@ body, html, #root {
   text-align: center;
   box-shadow: 0 4px 16px rgba(255, 77, 77, 0.2);
   animation: fadeIn 0.3s ease-in-out;
-}
-
-.error-box.visible {
-  display: block;
 }
 
 /* Fade-in Animation */

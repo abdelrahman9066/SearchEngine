@@ -27,19 +27,23 @@ function App() {
 
   const handleSearch = async () => {
     const words = query.trim().split(/\s+/); // Split input into words
-    const specialCharRegex = /[^a-zA-Z\s]/; // Regex to check for special characters
+    const specialCharRegex = /[^a-zA-Z0-9\s]/g; // Regex to check for special characters
+    const numberRegex = /\d/; // Regex to check for numbers
 
     // Validation
     if (words.length > 2) {
-      setErrorMessage('Enter two words');
+      setErrorMessage('Please enter no more than two words.');
       return;
     }
     if (specialCharRegex.test(query)) {
-      setErrorMessage('Enter words only');
+      setErrorMessage('Special characters are not allowed.');
+      return;
+    }
+    if (numberRegex.test(query)) {
+      setErrorMessage('Numbers are not allowed.');
       return;
     }
 
-    // Clear error message if input is valid
     setErrorMessage('');
 
     const [query1, query2] = words;
@@ -54,9 +58,11 @@ function App() {
       const response = await fetch(url);
       const data = await response.json();
 
-      // Check if the API returned results
-      if (!data || (!data.firstWordInfos?.length && !data.secondWordInfos?.length)) {
-        setErrorMessage('Not Found');
+      if (
+        !data &&
+        (!data.firstWordInfos?.length && (!query2 || !data.secondWordInfos?.length))
+      ) {
+        setErrorMessage('No results found.');
         setResults(null);
         setSearched(true);
         return;
@@ -164,9 +170,11 @@ function App() {
               </button>
             </div>
           </div>
-          <div className={`error-box ${errorMessage ? 'visible' : ''}`}>
-            {errorMessage && <p>{errorMessage}</p>}
-          </div>
+          {errorMessage && (
+            <div className="error-box">
+              <p>{errorMessage}</p>
+            </div>
+          )}
           <div className={`results-box${searched && results ? ' expanded' : ''}`}>
             {results && <SearchResults results={searchResultsProps} orderBy={orderBy} />}
           </div>
