@@ -17,17 +17,16 @@ interface SearchResultsProps {
 }
 
 const SearchResults: React.FC<SearchResultsProps> = ({ results, orderBy }) => {
-  // Don't render anything if there are no results (initial state)
-  if (!results || (!results.firstWordInfos && !results.secondWordInfos)) {
-    return null;
-  }
-
-  const { firstWordInfos = [], secondWordInfos = [], message = '' } = results;
-
-  // Pagination state
-const [firstPage, setFirstPage] = useState<number>(1);
-
+// Pagination state
+const [firstPage, setFirstPage] = useState(0);
 const [secondPage, setSecondPage] = useState<number>(1);
+
+// Don't render anything if there are no results (initial state)
+if (!results || (!results.firstWordInfos && !results.secondWordInfos)) {
+  return null;
+}
+
+const { firstWordInfos = [], secondWordInfos = [], message = '' } = results;
   const pageSize = 10;
 
   // Pagination logic
