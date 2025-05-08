@@ -107,7 +107,7 @@ body, html, #root {
   align-items: center;
   background: #fff;
   border-radius: 2rem;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   padding: 0.5rem 1rem;
   width: 600px;
   max-width: 95vw;
@@ -183,10 +183,57 @@ body, html, #root {
   display: block;
 }
 
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .search-bar-inner {
+    width: 90%;
+    padding: 0.5rem;
+  }
+
+  .search-input {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+
+  .search-icon-btn {
+    padding: 0.3rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bar-inner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.5rem;
+  }
+
+  .search-input {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .search-icon-btn {
+    align-self: flex-end;
+    padding: 0.3rem 0.5rem;
+  }
+  .search-toggle-btn{
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+}
+
 .order-buttons {
   display: flex;
   gap: 0.5rem;
   margin-left: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  
 }
 
 .order-btn {

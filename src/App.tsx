@@ -28,7 +28,7 @@ function App() {
     const [query1, query2] = query.trim().split(/\s+/, 2);
     if (!query1) return;
     try {
-      let url = `http://searchengine.runasp.net/api/SearchEngine?word=${query1}`;
+      let url = `https://searchengine.runasp.net/api/SearchEngine?word=${query1}`;
       if (query2) {
         url += `%20${query2}`;
       }
