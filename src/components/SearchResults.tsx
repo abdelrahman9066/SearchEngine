@@ -18,7 +18,7 @@ interface SearchResultsProps {
 
 const SearchResults: React.FC<SearchResultsProps> = ({ results, orderBy }) => {
 // Pagination state
-const [firstPage, setFirstPage] = useState(0);
+const [firstPage, setFirstPage] = useState<number>(1);
 const [secondPage, setSecondPage] = useState<number>(1);
 
 // Don't render anything if there are no results (initial state)
